@@ -1,10 +1,10 @@
-#!/bin/sh
+  #!/usr/bin/env bash
 
 set -ex
 
 # params
 
-: ${KLIPPER_REPO:="https://github.com/PrusaOwners/klipper.git"}
+: ${KLIPPER_REPO:="https://github.com/KevinOConnor/klipper.git"}
 : ${KLIPPER_DIR:="$HOME/klipper"}
 : ${KLIPPER_DWC2_DIR:="$HOME/klipper-dwc2"}
 : ${VIRTUALENV_DIR:="$HOME/klippy-env"}
