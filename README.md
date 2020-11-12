@@ -1,22 +1,9 @@
 # alpine-klipper
 
-Klipper installation scrips for Alpine Linux to use with [alpine-raspberry-pi](https://github.com/knoopx/alpine-raspberry-pi)
+Automated klipper/moonraker/mainsail/fluidd installation script for Alpine Linux to use with [alpine-raspberry-pi](https://github.com/knoopx/alpine-raspberry-pi)
 
-# Usage
+## Usage
 
-To install official klipper run
-
+```bash
+curl -Ls https://raw.githubusercontent.com/knoopx/alpine-klipper/master/install.sh | bash -s
 ```
-curl -Ls https://raw.githubusercontent.com/knoopx/alpine-klipper/master/bootstrap.sh | bash -s
-
-```
-
-
-
-To install PrusaOwners fork
-
-```
-curl -Ls https://raw.githubusercontent.com/knoopx/alpine-klipper/master/bootstrap.sh | KLIPPER_REPO="https://github.com/PrusaOwners/klipper.git" bash -s
-
-```
-
