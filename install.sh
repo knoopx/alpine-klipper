@@ -14,6 +14,7 @@ set -euxo pipefail
 : ${MOONRAKER_VENV_PATH:="$HOME/venv/moonraker"}
 
 : ${CLIENT:="fluidd"}
+: ${CLIENT_PATH:="$HOME/www"}
 
 if [ $(id -u) = 0 ]; then
     echo "This script must not run as root"
@@ -35,11 +36,9 @@ sudo rc-update add udev sysinit
 
 case $CLIENT in
   fluidd)
-    CLIENT_PATH="$HOME/fluidd"
     CLIENT_RELEASE_URL=`curl -s https://api.github.com/repos/cadriel/fluidd/releases | jq -r ".[0].assets[0].browser_download_url"`
     ;;
   mainsail)
-    CLIENT_PATH="$HOME/mainsail"
     CLIENT_RELEASE_URL=`curl -s https://api.github.com/repos/meteyou/mainsail/releases | jq -r ".[0].assets[0].browser_download_url"`
     ;;
   *)
@@ -100,10 +99,14 @@ cat > $HOME/moonraker.conf <<EOF
 host: 0.0.0.0
 config_path: $CONFIG_PATH
 
-[authorization]
-enabled: false
-trusted_clients:
-    192.168.1.0/24
+[octoprint_compat]
+
+[update_manager]
+
+[update_manager client fluidd]
+type: web
+repo: cadriel/fluidd
+path: ~/www
 EOF
 
 sudo rc-update add moonraker
@@ -169,14 +172,13 @@ cat > $HOME/update <<EOF
 set -exo pipefail
 
 : \${CLIENT:="$CLIENT"}
+: \${CLIENT_PATH:="$CLIENT_PATH"}
 
 case \$CLIENT in
   fluidd)
-    CLIENT_PATH="$HOME/fluidd"
     CLIENT_RELEASE_URL=`curl -s https://api.github.com/repos/cadriel/fluidd/releases | jq -r ".[0].assets[0].browser_download_url"`
     ;;
   mainsail)
-    CLIENT_PATH="$HOME/mainsail"
     CLIENT_RELEASE_URL=`curl -s https://api.github.com/repos/meteyou/mainsail/releases | jq -r ".[0].assets[0].browser_download_url"`
     ;;
   *)
