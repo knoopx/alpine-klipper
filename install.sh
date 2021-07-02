@@ -28,7 +28,7 @@ sudo apk add git unzip python2 python2-dev libffi-dev make gcc g++ \
 ncurses-dev avrdude gcc-avr binutils-avr avr-libc \
 python3 py3-virtualenv \
 python3-dev freetype-dev fribidi-dev harfbuzz-dev jpeg-dev lcms2-dev openjpeg-dev tcl-dev tiff-dev tk-dev zlib-dev \
-jq
+jq eudev
 
 case $CLIENT in
   fluidd)
