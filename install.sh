@@ -75,7 +75,7 @@ sudo service klipper start
 # MOONRAKER
 ################################################################################
 
-sudo apk add libsodium
+sudo apk add libsodium curl-dev
 
 test -d $MOONRAKER_PATH || git clone $MOONRAKER_REPO $MOONRAKER_PATH
 test -d $MOONRAKER_VENV_PATH || virtualenv -p python3 $MOONRAKER_VENV_PATH
